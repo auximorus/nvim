@@ -2,7 +2,7 @@
 local M = {}
 
 M.bools = {number = true, relativenumber = false}
-M.val = {shiftwidth = 4}
+M.val = {shiftwidth = 4,tabstop = 4}
 M.strs = {}
 M.lst = {}
 

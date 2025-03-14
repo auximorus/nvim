@@ -14,3 +14,11 @@ end
 for k,v in pairs(opt.bools) do
   set[k] = v
 end
+
+-- for k,v in pairs(opt.lsts) do
+  -- set[k] = v
+-- end
+
+-- for k,v in pairs(opt.strs) do
+  -- set[k] = v
+-- end
