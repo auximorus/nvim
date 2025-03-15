@@ -19,6 +19,6 @@ end
   -- set[k] = v
 -- end
 
--- for k,v in pairs(opt.strs) do
-  -- set[k] = v
--- end
+for k,v in pairs(opt.strs) do
+  set[k] = v
+end
