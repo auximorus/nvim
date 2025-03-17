@@ -71,6 +71,16 @@ M.general = {
     -- ["p"] = { 'p:let @+=@0<CR>:let @"=@0<CR>', "Dont copy replaced text", opts = { silent = true } },
   -- },
 }
+
+M.lsp = {
+  ["n"] = {
+	["grn"] = {vim.lsp.buf.rename , "Rename variable"},
+	['gra'] = {vim.lsp.buf.code_action , "Code action"},
+	['grr'] = {vim.lsp.buf.references, "References"},
+	['grf'] = {vim.lsp.buf.format, "Format"},
+  }
+
+}
 -- vim.keymap.set('n', 'grn', vim.lsp.buf.rename)
 -- vim.keymap.set('n', 'gra', vim.lsp.buf.code_action)
 -- vim.keymap.set('n', 'grr', vim.lsp.buf.references)

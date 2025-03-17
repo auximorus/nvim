@@ -26,12 +26,17 @@ for k,v in pairs(opt.strs) do
 end
 
 -- Mappings
-for mod,vals in pairs(maps.general) do
-  -- print(type(mod))
-  local cmdtable = {mode = mod}
-  for short,cmd in pairs(vals) do
-	-- print(short,cmd[1],cmd[2])
-	table.insert(cmdtable,{short,cmd[1],desc = cmd[2]})
+function create_mapping(maptable)
+  for mod,vals in pairs(maptable) do
+	-- print(type(mod))
+	local cmdtable = {mode = mod}
+	for short,cmd in pairs(vals) do
+	  -- print(short,cmd[1],cmd[2])
+	  table.insert(cmdtable,{short,cmd[1],desc = cmd[2]})
+	end
+	wk.add({cmdtable})
   end
-  wk.add({cmdtable})
 end
+
+create_mapping(maps.general)
+create_mapping(maps.lsp)
