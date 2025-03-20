@@ -1,6 +1,39 @@
 local builtin = require('telescope.builtin')
 local M = {}
 
+local resize_active = false
+local original_statusline = nil
+local function update_statusline(msg)
+  vim.opt.statusline = msg
+end
+local function start_resize_mode()
+  if resize_active then return end
+  resize_active = true
+
+  original_statusline = vim.opt.statusline:get()
+  update_statusline("🔧 RESIZE MODE: j/k = height, h/l = width, Esc = exit")
+  local opts = { noremap = true, silent = true }
+
+  vim.keymap.set("n", "j", function() vim.cmd("resize +2") end, opts)
+  vim.keymap.set("n", "k", function() vim.cmd("resize -2") end, opts)
+  vim.keymap.set("n", "h", function() vim.cmd("vertical resize -2") end, opts)
+  vim.keymap.set("n", "l", function() vim.cmd("vertical resize +2") end, opts)
+  vim.keymap.set("n", "<Esc>", stop_resize_mode, opts)
+end
+
+function stop_resize_mode()
+  if not resize_active then return end
+  resize_active = false
+  if original_statusline then
+    update_statusline(original_statusline)
+  end
+  vim.keymap.del("n", "j")
+  vim.keymap.del("n", "k")
+  vim.keymap.del("n", "h")
+  vim.keymap.del("n", "l")
+  vim.keymap.del("n", "<Esc>")
+end
+
 M.general = {
   ["i"] = {
     -- go to  beginning and end
@@ -16,11 +49,13 @@ M.general = {
 
   ["n"] = {
     ["<Esc>"] = { "<cmd> noh <CR>", "Clear highlights" },
-    -- switch between windows
+    ["<C-x>"] = { "<cmd> q <CR>", "Quit/Close" },
+    -- Window related mappings
     ["<C-h>"] = { "<C-w>h", "Window left" },
     ["<C-l>"] = { "<C-w>l", "Window right" },
     ["<C-j>"] = { "<C-w>j", "Window down" },
     ["<C-k>"] = { "<C-w>k", "Window up" },
+    ["<leader>w"] = { start_resize_mode, "Activate resize mode" },
 
     -- save
     ["<C-s>"] = { "<cmd> w <CR>", "Save file" },
@@ -32,24 +67,9 @@ M.general = {
     ["<leader>n"] = { "<cmd> set nu! <CR>", "Toggle line number" },
     ["<leader>rn"] = { "<cmd> set rnu! <CR>", "Toggle relative number" },
 
-    -- Allow moving the cursor through wrapped lines with j, k, <Up> and <Down>
-    -- http://www.reddit.com/r/vim/comments/2k4cbr/problem_with_gj_and_gk/
-    -- empty mode is same as using <cmd> :map
-    -- also don't use g[j|k] when in operator pending mode, so it doesn't alter d, y or c behaviour
-    -- ["j"] = { 'v:count || mode(1)[0:1] == "no" ? "j" : "gj"', "Move down", opts = { expr = true } },
-    -- ["k"] = { 'v:count || mode(1)[0:1] == "no" ? "k" : "gk"', "Move up", opts = { expr = true } },
-    -- ["<Up>"] = { 'v:count || mode(1)[0:1] == "no" ? "k" : "gk"', "Move up", opts = { expr = true } },
-    -- ["<Down>"] = { 'v:count || mode(1)[0:1] == "no" ? "j" : "gj"', "Move down", opts = { expr = true } },
-
     -- new buffer
     ["<leader>b"] = { "<cmd> enew <CR>", "New buffer" },
 
-    -- ["<leader>fm"] = {
-    -- function()
-    -- vim.lsp.buf.format { async = true }
-    -- end,
-    -- "LSP formatting",
-    -- },
   },
 
   ["t"] = {
@@ -57,19 +77,11 @@ M.general = {
   },
 
   ["v"] = {
-    -- ["<Up>"] = { 'v:count || mode(1)[0:1] == "no" ? "k" : "gk"', "Move up(Visual Line)", opts = { expr = true } },
-    -- ["<Down>"] = { 'v:count || mode(1)[0:1] == "no" ? "j" : "gj"', "Move down(Visual Line)", opts = { expr = true } },
     ["<"] = { "<gv", "Indent line" },
     [">"] = { ">gv", "Indent line" },
   },
 
-  -- ["x"] = {
-  -- ["j"] = { 'v:count || mode(1)[0:1] == "no" ? "j" : "gj"', "Move down", opts = { expr = true } },
-  -- ["k"] = { 'v:count || mode(1)[0:1] == "no" ? "k" : "gk"', "Move up", opts = { expr = true } },
-  -- Don't copy the replaced text after pasting in visual mode
-  -- https://vim.fandom.com/wiki/Replace_a_word_with_yanked_text#Alternative_mapping_for_paste
-  -- ["p"] = { 'p:let @+=@0<CR>:let @"=@0<CR>', "Dont copy replaced text", opts = { silent = true } },
-  -- },
+
 }
 
 M.lsp = {
@@ -77,7 +89,6 @@ M.lsp = {
     ["grn"] = { vim.lsp.buf.rename, "Rename variable" },
     ['gra'] = { vim.lsp.buf.code_action, "Code action" },
     ['grr'] = { vim.lsp.buf.references, "References" },
-    -- ['grf'] = {vim.lsp.buf.format({bufnr = vim.fn.bufnr(),id = vim.lsp.get_active_clients()}), "Format"},
     ['grf'] = { vim.lsp.buf.format, "Format" },
   }
 
@@ -90,4 +101,5 @@ M.telescope = {
     ['<leader>fh'] = { builtin.help_tags, 'Telescope help' },
   }
 }
+
 return M
