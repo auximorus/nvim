@@ -67,8 +67,10 @@ M.general = {
     ["<leader>n"] = { "<cmd> set nu! <CR>", "Toggle line number" },
     ["<leader>rn"] = { "<cmd> set rnu! <CR>", "Toggle relative number" },
 
-    -- new buffer
+    -- Buffer ant tabs related mappings
     ["<leader>b"] = { "<cmd> enew <CR>", "New buffer" },
+    ["K"] = { "<cmd>BufferLineCycleNext<CR>", "Go to next buffer" },
+    ["J"] = { "<cmd>BufferLineCyclePrev<CR>", "Go to previous buffer" },
 
   },
 
