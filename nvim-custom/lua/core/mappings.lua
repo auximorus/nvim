@@ -74,6 +74,10 @@ M.general = {
     ["J"] = { "<cmd>BufferLineCyclePrev<CR>", "Go to previous buffer" },
 
     ["<leader>th"] = { "<cmd> Themery <CR>", "Change Themes" },
+
+    ["<C-n>"] = { "<cmd> Oil <CR>", "Oil" },
+
+
   },
 
   ["t"] = {
@@ -94,6 +98,7 @@ M.lsp = {
     ['gra'] = { vim.lsp.buf.code_action, "Code action" },
     ['grr'] = { vim.lsp.buf.references, "References" },
     ['grf'] = { vim.lsp.buf.format, "Format" },
+    ['grk'] = { vim.lsp.buf.hover, "Hover" },
   }
 
 }
