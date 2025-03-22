@@ -69,9 +69,11 @@ M.general = {
 
     -- Buffer and tabs related mappings
     ["<leader>b"] = { "<cmd> enew <CR>", "New buffer" },
+    ["<leader>x"] = { "<cmd> bdelete <CR>", "Close buffer" },
     ["K"] = { "<cmd>BufferLineCycleNext<CR>", "Go to next buffer" },
     ["J"] = { "<cmd>BufferLineCyclePrev<CR>", "Go to previous buffer" },
 
+    ["<leader>th"] = { "<cmd> Themery <CR>", "Change Themes" },
   },
 
   ["t"] = {

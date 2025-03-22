@@ -2,6 +2,7 @@ return {
   "zaldih/themery.nvim",
   lazy = false,
   config = function()
+    local theme_file = vim.fn.stdpath("cache") .. "/selected_theme.txt"
     local light_themes = {
       ["Tokyonight Day"] = "tokyonight-day",
       ["Catppuccin Latte"] = "catppuccin-latte",
@@ -108,9 +109,33 @@ return {
       table.insert(theme_list, v)
     end
 
+    local function read_saved_theme()
+      local f = io.open(theme_file, "r")
+      if f then
+        local theme = f:read("*l")
+        f:close()
+        return theme
+      end
+      return nil
+    end
+
+    local function save_theme(theme)
+      local f = io.open(theme_file, "w")
+      if f then
+        f:write(theme)
+        f:close()
+      end
+    end
+    local saved_theme = read_saved_theme()
+    if saved_theme then
+      vim.cmd("colorscheme " .. saved_theme)
+    end
     require("themery").setup({
       themes = theme_list,
       livePreview = true,
+      onThemeChange = function(theme)
+        save_theme(theme)
+      end
     })
   end
 }
