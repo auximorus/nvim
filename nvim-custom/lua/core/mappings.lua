@@ -81,7 +81,7 @@ M.general = {
   },
 
   ["t"] = {
-    ["<C-x>"] = { vim.api.nvim_replace_termcodes("<C-\\><C-N>", true, true, true), "Escape terminal mode" },
+    ["<Esc>"] = { vim.api.nvim_replace_termcodes("<C-\\><C-N>", true, true, true), "Escape terminal mode" },
   },
 
   ["v"] = {
@@ -110,18 +110,4 @@ M.telescope = {
     ['<leader>fh'] = { builtin.help_tags, 'Telescope help' },
   }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 return M
