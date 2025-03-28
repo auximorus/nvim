@@ -55,7 +55,6 @@ M.general = {
     ["<C-l>"] = { "<C-w>l", "Window right" },
     ["<C-j>"] = { "<C-w>j", "Window down" },
     ["<C-k>"] = { "<C-w>k", "Window up" },
-    ["<leader>w"] = { start_resize_mode, "Activate resize mode" },
 
     -- save
     ["<C-s>"] = { "<cmd> w <CR>", "Save file" },
@@ -65,7 +64,7 @@ M.general = {
 
     -- line numbers
     ["<leader>n"] = { "<cmd> set nu! <CR>", "Toggle line number" },
-    ["<leader>rn"] = { "<cmd> set rnu! <CR>", "Toggle relative number" },
+    ["<leader>nr"] = { "<cmd> set rnu! <CR>", "Toggle relative number" },
 
     -- Buffer and tabs related mappings
     ["<leader>b"] = { "<cmd> enew <CR>", "New buffer" },
@@ -75,7 +74,6 @@ M.general = {
 
     ["<leader>th"] = { "<cmd> Themery <CR>", "Change Themes" },
 
-    ["<C-n>"] = { "<cmd> Oil <CR>", "Oil" },
 
 
   },
@@ -105,9 +103,31 @@ M.lsp = {
 M.telescope = {
   ['n'] = {
     ["<leader>ff"] = { builtin.find_files, 'Telescope find files' },
-    ["<leader>fg"] = { builtin.live_grep, 'Telescope live grep' },
+    ["<leader>fw"] = { builtin.live_grep, 'Telescope live grep' },
     ['<leader>fb'] = { builtin.buffers, 'Telescope buffers' },
     ['<leader>fh'] = { builtin.help_tags, 'Telescope help' },
+  }
+}
+M.notsogeneral = {
+  ['n'] = {
+    ['<leader>gt'] = { "<cmd> Themery <CR>", "Change Themes" },
+    ['<leader>gm'] = { "<cmd> Mason <CR>", "Open Mason UI" },
+    ['<leader>gf'] = { "<cmd> TSInstall", "Treesitter Install " },
+    ["<leader>go"] = { "<cmd> Oil <CR>", "Oil" },
+    ["<leader>gw"] = { start_resize_mode, "Activate resize mode" },
+  }
+}
+M.terminal = {
+  ['n'] = {
+    ["<leader>th"] = { "<cmd> ToggleTerm direction=horizontal <CR>", "Terminal horizontal" },
+    ["<leader>tv"] = { "<cmd> ToggleTerm direction=vertical <CR>", "Terminal vertical" },
+    ["<leader>tt"] = { "<cmd> ToggleTerm direction=tab <CR>", "Terminal tab" },
+    ["<leader>tf"] = { "<cmd> ToggleTerm direction=float <CR>", "Terminal float" },
+    ["<leader>tl"] = { "<cmd> ToggleTermSendCurrentLine <CR>", "Send current line to Terminal" },
+  },
+  ['v'] = {
+    ["<leader>ts"] = { "<cmd> ToggleTermSendVisualSelection <CR>", "Send visual selection to terminal" },
+    ["<leader>tl"] = { "<cmd> ToggleTermSendVisualLines <CR>", "Send visual lines to terminal" },
   }
 }
 return M
