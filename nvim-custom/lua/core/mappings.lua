@@ -63,8 +63,6 @@ M.general = {
     ["<C-c>"] = { "<cmd> %y+ <CR>", "Copy whole file" },
 
     -- line numbers
-    ["<leader>n"] = { "<cmd> set nu! <CR>", "Toggle line number" },
-    ["<leader>nr"] = { "<cmd> set rnu! <CR>", "Toggle relative number" },
 
     -- Buffer and tabs related mappings
     ["<leader>b"] = { "<cmd> enew <CR>", "New buffer" },
@@ -112,8 +110,10 @@ M.notsogeneral = {
   ['n'] = {
     ['<leader>gt'] = { "<cmd> Themery <CR>", "Change Themes" },
     ['<leader>gm'] = { "<cmd> Mason <CR>", "Open Mason UI" },
-    ['<leader>gf'] = { "<cmd> TSInstall", "Treesitter Install " },
+    ['<leader>gf'] = { ":TSInstall ", "Treesitter Install " },
     ["<leader>go"] = { "<cmd> Oil <CR>", "Oil" },
+    ["<leader>gn"] = { "<cmd> set nu! <CR>", "Toggle line number" },
+    ["<leader>gr"] = { "<cmd> set rnu! <CR>", "Toggle relative number" },
     ["<leader>gw"] = { start_resize_mode, "Activate resize mode" },
   }
 }

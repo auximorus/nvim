@@ -2,6 +2,7 @@ local opt = require("core.options")
 local maps = require("core.mappings")
 local acm = require("core.autocmds")
 local wk = require("which-key")
+local cmp = require('blink.cmp')
 local set = vim.opt
 local autocmd = vim.api.nvim_create_autocmd
 local creategroup = vim.api.nvim_create_augroup
@@ -53,11 +54,13 @@ function create_group_mapping(group_key, group_name, group_table)
   end
 end
 
+-- creating mappings from mappings.lua
 create_mapping(maps.general)
 create_mapping(maps.lsp)
 create_group_mapping("<leader>f", "Telescope", maps.telescope)
 create_group_mapping("<leader>g", "Not General", maps.notsogeneral)
 create_group_mapping("<leader>t", "Terminal related", maps.terminal)
+
 -- Autocommands ---------------------
 function run_autocommands(args)
   for i, cmds in ipairs(args) do
