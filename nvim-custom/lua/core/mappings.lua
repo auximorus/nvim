@@ -104,6 +104,8 @@ M.telescope = {
     ["<leader>fw"] = { builtin.live_grep, 'Telescope live grep' },
     ['<leader>fb'] = { builtin.buffers, 'Telescope buffers' },
     ['<leader>fh'] = { builtin.help_tags, 'Telescope help' },
+    ['<leader>fn'] = { "<cmd> Telescope notify <CR>", 'Telescope notify' },
+
   }
 }
 M.notsogeneral = {
@@ -115,6 +117,8 @@ M.notsogeneral = {
     ["<leader>gn"] = { "<cmd> set nu! <CR>", "Toggle line number" },
     ["<leader>gr"] = { "<cmd> set rnu! <CR>", "Toggle relative number" },
     ["<leader>gw"] = { start_resize_mode, "Activate resize mode" },
+    ["<leader>gh"] = { "q:", "Command history" },
+
   }
 }
 M.terminal = {
