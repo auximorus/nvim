@@ -1,7 +1,7 @@
 return {
   {
     "williamboman/mason-lspconfig.nvim",
-    ensure_installed = { "lua_ls" }
+    ensure_installed = { "lua_ls", "clangd" }
   },
   {
     "williamboman/mason.nvim",
@@ -28,6 +28,7 @@ return {
     config = function()
       local capabilities = require('blink.cmp').get_lsp_capabilities()
       require("lspconfig").lua_ls.setup { capabilities = capabilities } -- lua language server must be installed
+      require("lspconfig").clangd.setup { capabilities = capabilities }
       vim.api.nvim_create_autocmd('LspAttach', {
         callback = function(args)
           local client = vim.lsp.get_client_by_id(args.data.client_id)

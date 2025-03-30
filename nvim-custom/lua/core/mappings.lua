@@ -1,6 +1,5 @@
 local builtin = require('telescope.builtin')
 local M = {}
-
 local resize_active = false
 local original_statusline = nil
 local function update_statusline(msg)
@@ -118,7 +117,7 @@ M.notsogeneral = {
     ["<leader>gr"] = { "<cmd> set rnu! <CR>", "Toggle relative number" },
     ["<leader>gw"] = { start_resize_mode, "Activate resize mode" },
     ["<leader>gh"] = { "q:", "Command history" },
-
+    ["<leader>gc"] = { "<cmd> RunCode <CR>", "Run code" },
   }
 }
 M.terminal = {

@@ -5,6 +5,7 @@
   "bluloco.nvim": { "branch": "main", "commit": "917d52614062d8b995a94296de19842edb5c70ce" },
   "bufferline.nvim": { "branch": "main", "commit": "655133c3b4c3e5e05ec549b9f8cc2894ac6f51b3" },
   "catppuccin": { "branch": "main", "commit": "5b5e3aef9ad7af84f463d17b5479f06b87d5c429" },
+  "code_runner.nvim": { "branch": "main", "commit": "50a59cbc53e62cd6c171023935a19a79b4bf42fb" },
   "cyberdream.nvim": { "branch": "main", "commit": "339a7b1293568405847b3627247da82a6030a852" },
   "everforest-nvim": { "branch": "main", "commit": "135cc21a45756e688dd1a3cbeb1c80a04b569b46" },
   "friendly-snippets": { "branch": "main", "commit": "efff286dd74c22f731cdec26a70b46e5b203c619" },
