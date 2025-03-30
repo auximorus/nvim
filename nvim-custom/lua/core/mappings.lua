@@ -118,6 +118,7 @@ M.notsogeneral = {
     ["<leader>gw"] = { start_resize_mode, "Activate resize mode" },
     ["<leader>gh"] = { "q:", "Command history" },
     ["<leader>gc"] = { "<cmd> RunCode <CR>", "Run code" },
+    ["<leader>ge"] = { "<cmd> WindowsEqualize <CR>", "Run code" },
   }
 }
 M.terminal = {
@@ -131,6 +132,16 @@ M.terminal = {
   ['v'] = {
     ["<leader>ts"] = { "<cmd> ToggleTermSendVisualSelection <CR>", "Send visual selection to terminal" },
     ["<leader>tl"] = { "<cmd> ToggleTermSendVisualLines <CR>", "Send visual lines to terminal" },
+  }
+}
+M.competitest = {
+  ['n'] = {
+    ['<leader>ca'] = { "<cmd> CompetiTest add_testcase<CR>", "Add Testcase" },
+    ['<leader>ce'] = { "<cmd> CompetiTest edit_testcase<CR>", "Edit Testcase" },
+    ['<leader>cr'] = { "<cmd> CompetiTest run<CR>", "Competitest run" },
+    ['<leader>cd'] = { "<cmd> CompetiTest delete_testcase<CR>", "Delete Testcase" },
+    ['<leader>cw'] = { "<cmd> CompetiTest receive testcases<CR>", "Receive Testcases" },
+    ['<leader>cc'] = { "<cmd> CompetiTest receive contest<CR>", "Receive Contest" },
   }
 }
 return M
