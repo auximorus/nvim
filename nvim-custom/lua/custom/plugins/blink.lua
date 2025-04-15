@@ -14,7 +14,9 @@ return {
       nerd_font_variant = 'mono'
     },
 
-    fuzzy = { implementation = "prefer_rust_with_warning" }
+    fuzzy = { implementation = "prefer_rust_with_warning" },
+    ghost_text = { enabled = true }
+
   },
 
   config = function()

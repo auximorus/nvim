@@ -118,7 +118,8 @@ M.notsogeneral = {
     ["<leader>gw"] = { start_resize_mode, "Activate resize mode" },
     ["<leader>gh"] = { "q:", "Command history" },
     ["<leader>gc"] = { "<cmd> RunCode <CR>", "Run code" },
-    ["<leader>ge"] = { "<cmd> WindowsEqualize <CR>", "Run code" },
+    ["<leader>ge"] = { "<cmd> WindowsEqualize <CR>", "Make windows equal" },
+    ["<leader>gd"] = { "gg0vG$d", "Clear Buffer" },
   }
 }
 M.terminal = {
@@ -142,6 +143,7 @@ M.competitest = {
     ['<leader>cd'] = { "<cmd> CompetiTest delete_testcase<CR>", "Delete Testcase" },
     ['<leader>cw'] = { "<cmd> CompetiTest receive testcases<CR>", "Receive Testcases" },
     ['<leader>cc'] = { "<cmd> CompetiTest receive contest<CR>", "Receive Contest" },
+    ['<leader>cp'] = { ':execute "%delete _ | read /home/auxi/Documents/compprog/cpTemplates/stand.cpp"<CR>', "Paste standard template" },
   }
 }
 return M
