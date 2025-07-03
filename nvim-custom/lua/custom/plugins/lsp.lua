@@ -1,7 +1,9 @@
 return {
   {
     "williamboman/mason-lspconfig.nvim",
-    ensure_installed = { "lua_ls", "clangd", "pyright", "tsserver" }
+    ensure_installed = {
+      "lua_ls", "clangd", "pyright", "ts_ls", "jsonls", "html", "cssls",
+    }
   },
   {
     "williamboman/mason.nvim",
@@ -14,13 +16,18 @@ return {
     dependencies = {
       'saghen/blink.cmp',
       {
+        "b0o/schemastore.nvim", -- JSON schema source
+        lazy = true,
+      },
+      {
         "folke/lazydev.nvim",
-        ft = "lua", -- only load on lua files
+        ft = "lua",
         opts = {
           library = {
-            -- See the configuration section for more details
-            -- Load luvit types when the `vim.uv` word is found
             { path = "${3rd}/luv/library", words = { "vim%.uv" } },
+          },
+          servers = {
+            lua_ls = {} -- keep this minimal, we'll configure the rest ourselves
           },
         },
       },
@@ -28,17 +35,36 @@ return {
     config = function()
       local capabilities = require('blink.cmp').get_lsp_capabilities()
       local lspconfig = require("lspconfig")
-      lspconfig["lua_ls"].setup({ capabilities = capabilities })
-      lspconfig["clangd"].setup({ capabilities = capabilities })
-      lspconfig["pyright"].setup({ capabilities = capabilities })
-      lspconfig["ts_ls"].setup({ capabilities = capabilities })
+      local status_ok, schemastore = pcall(require, "schemastore")
+
+      local servers = {
+        lua_ls = {},
+        clangd = {},
+        pyright = {},
+        html = {},
+        ts_ls = {},
+        cssls = {},
+        jsonls = {
+          settings = {
+            json = {
+              schemas = status_ok and schemastore.json.schemas() or nil,
+              validate = { enable = true },
+            },
+          },
+        },
+      }
+
+      for server, config in pairs(servers) do
+        config.capabilities = require('blink.cmp').get_lsp_capabilities(config.capabilities)
+        lspconfig[server].setup(config)
+      end
+
+      -- Format on save
       vim.api.nvim_create_autocmd('LspAttach', {
         callback = function(args)
           local client = vim.lsp.get_client_by_id(args.data.client_id)
-          if not client then
-            return
-          end
-          --		  ---@diagnostic disable-next-line: missing-parameter
+          if not client then return end
+
           if client.supports_method('textDocument/formatting') then
             vim.api.nvim_create_autocmd('BufWritePre', {
               buffer = args.buf,

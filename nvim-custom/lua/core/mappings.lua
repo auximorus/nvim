@@ -120,6 +120,7 @@ M.notsogeneral = {
     ["<leader>gc"] = { "<cmd> RunCode <CR>", "Run code" },
     ["<leader>ge"] = { "<cmd> WindowsEqualize <CR>", "Make windows equal" },
     ["<leader>gd"] = { "gg0vG$d", "Clear Buffer" },
+    ["<leader>gl"] = { "<cmd> Lazy<CR>", "Lazy" },
   }
 }
 M.terminal = {
