@@ -8,6 +8,11 @@ M.solo = {
       vim.opt.number = false
       vim.opt.relativenumber = false
     end
+  },
+  {
+    events = { "BufRead", "BufNewFile" },
+    pattern = { "*.ejs" },
+    command = "set filetype=html",
   }
 }
 -- format for augroup [group_name] = table(similar format to autocommand)
