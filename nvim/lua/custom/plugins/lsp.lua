@@ -2,7 +2,7 @@ return {
   {
     "williamboman/mason-lspconfig.nvim",
     ensure_installed = {
-      "lua_ls", "clangd", "pyright", "ts_ls", "jsonls", "html", "cssls",
+      "lua_ls", "clangd", "pyright", "ts_ls", "jsonls", "html", "cssls", "solidity_ls_nomicfoundation"
     }
   },
   {
@@ -52,6 +52,7 @@ return {
             },
           },
         },
+        solidity_ls_nomicfoundation = {},
       }
 
       for server, config in pairs(servers) do
