@@ -147,4 +147,17 @@ M.competitest = {
     ['<leader>cp'] = { ':execute "%delete _ | read /home/auxi/Documents/compprog/cpTemplates/stand.cpp"<CR>', "Paste standard template" },
   }
 }
+
+M.kulala = {
+  ['n'] = {
+    ['<leader>kr'] = { "require('kulala').run()", "Kulala send request" },
+    ['<leader>ka'] = { "require('kulala').run_all()", "Kulala send all requests (http only)" },
+    ['<leader>ks'] = { "require('kulala').scratchpad()", "Kulala open scratchpad" },
+    ['<leader>ko'] = { "require('kulala').toggle_view()", "Kulala toggle response view" },
+    ['<leader>kj'] = { "require('kulala').jump_next()", "Kulala jump to next request" },
+    ['<leader>kk'] = { "require('kulala').jump_prev()", "Kulala jump to previous request" },
+    ['<leader>kc'] = { "require('kulala').close()", "Kulala close output view" },
+  }
+}
+
 return M

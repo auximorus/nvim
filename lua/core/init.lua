@@ -63,6 +63,7 @@ create_group_mapping("<leader>f", "Telescope", maps.telescope)
 create_group_mapping("<leader>g", "Not General", maps.notsogeneral)
 create_group_mapping("<leader>t", "Terminal related", maps.terminal)
 create_group_mapping("<leader>c", "Competitest related", maps.competitest)
+create_group_mapping("<leader>k", "kulala related", maps.kulala)
 -- Autocommands ---------------------
 function run_autocommands(args)
   for i, cmds in ipairs(args) do
