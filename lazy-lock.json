@@ -51,6 +51,7 @@
   "vim-moonfly-colors": { "branch": "master", "commit": "8129169a07cb64fef644f73c3fd27db2e50e818a" },
   "vim-nightfly-colors": { "branch": "master", "commit": "7818d2b40d1e35bd351d673c0ffef4f4bb9230c6" },
   "vim-startify": { "branch": "master", "commit": "4e089dffdad46f3f5593f34362d530e8fe823dcf" },
+  "vim-suda": { "branch": "master", "commit": "c492741b4679b3cdd4d9e34138209784e061d916" },
   "which-key.nvim": { "branch": "main", "commit": "b4177e3eaf15fe5eb8357ebac2286d488be1ed00" },
   "windows.nvim": { "branch": "main", "commit": "c7492552b23d0ab30325e90b56066ec51242adc8" }
 }
