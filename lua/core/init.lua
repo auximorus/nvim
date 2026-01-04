@@ -1,9 +1,9 @@
 local opt = require("core.options")
-local ft = require("core.filetypes")
+-- local ft = require("core.filetypes")
 local maps = require("core.mappings")
 local acm = require("core.autocmds")
 local wk = require("which-key")
-local cmp = require('blink.cmp')
+local cmp = require("blink.cmp")
 
 local set = vim.opt
 local autocmd = vim.api.nvim_create_autocmd

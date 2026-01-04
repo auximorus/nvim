@@ -1,22 +1,21 @@
 return {
-  'saghen/blink.cmp',
-  dependencies = { 'rafamadriz/friendly-snippets' },
+  "saghen/blink.cmp",
+  dependencies = { "rafamadriz/friendly-snippets" },
 
-  version = '*',
+  version = "*",
   ---@module 'blink.cmp'
   ---@type blink.cmp.Config
   opts = {
     keymap = {
-      preset = 'default',
+      preset = "default",
     },
 
     appearance = {
-      nerd_font_variant = 'mono'
+      nerd_font_variant = "mono",
     },
 
     fuzzy = { implementation = "prefer_rust_with_warning" },
-    ghost_text = { enabled = true }
-
+    ghost_text = { enabled = true },
   },
 
   config = function()
@@ -25,18 +24,16 @@ return {
     vim.api.nvim_create_autocmd("InsertEnter", {
       callback = function()
         blink_cmp.show()
-      end
+      end,
     })
 
     local function completion_visible()
       return blink_cmp.is_menu_visible()
     end
 
-    vim.keymap.set("i", "<CR>", function()
+    vim.keymap.set("i", "<C-y>", function()
       if completion_visible() then
         return blink_cmp.select_and_accept()
-      else
-        return "<CR>"
       end
     end, { expr = true, noremap = true, silent = true })
 
@@ -55,6 +52,6 @@ return {
         return "<S-Tab>"
       end
     end, { expr = true, noremap = true, silent = true })
-    require('blink.cmp').setup()
+    require("blink.cmp").setup()
   end,
 }
