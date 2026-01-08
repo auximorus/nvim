@@ -33,11 +33,16 @@ end
 -- Mappings -------------------
 function create_mapping(maptable)
   for mod, vals in pairs(maptable) do
-    -- print(type(mod))
     local cmdtable = { mode = mod }
     for short, cmd in pairs(vals) do
-      -- print(short,cmd[1],cmd[2])
-      table.insert(cmdtable, { short, cmd[1], desc = cmd[2] })
+      local map = { short, cmd[1], desc = cmd[2] }
+
+      for k, v in pairs(cmd) do
+        if k ~= 1 and k ~= 2 then
+          map[k] = v
+        end
+      end
+      table.insert(cmdtable, map)
     end
     wk.add({ cmdtable })
   end

@@ -1,4 +1,5 @@
 local builtin = require("telescope.builtin")
+local comment = require("Comment.api")
 local ls = require("luasnip")
 local M = {}
 local resize_active = false
@@ -45,24 +46,6 @@ function stop_resize_mode()
   vim.keymap.del("n", "l")
   vim.keymap.del("n", "<Esc>")
 end
-
---
---vim.keymap.set({ "i" }, "<C-K>", function()
---  ls.expand()
---end, { silent = true })
---vim.keymap.set({ "i", "s" }, "<C-L>", function()
---  ls.jump(1)
---end, { silent = true })
---vim.keymap.set({ "i", "s" }, "<C-J>", function()
---  ls.jump(-1)
---end, { silent = true })
---
---vim.keymap.set({ "i", "s" }, "<C-E>", function()
---  if ls.choice_active() then
---    ls.change_choice(1)
---  end
---end, { silent = true })
---
 M.general = {
   ["i"] = {
     -- go to  beginning and end
@@ -118,7 +101,9 @@ M.general = {
     -- Copy all
     ["<C-c>"] = { "<cmd> %y+ <CR>", "Copy whole file" },
 
-    -- line numbers
+    -- comments
+
+    ["<leader>/"] = { comment.toggle.linewise.current, "Comments current line" },
 
     -- Buffer and tabs related mappings
     ["<leader>b"] = { "<cmd> enew <CR>", "New buffer" },
@@ -136,6 +121,13 @@ M.general = {
   ["v"] = {
     ["<"] = { "<gv", "Indent line" },
     [">"] = { ">gv", "Indent line" },
+  },
+  ["x"] = {
+    ["<leader>/"] = {
+      "gc",
+      "Comments visual block",
+      remap = true,
+    },
   },
 }
 
