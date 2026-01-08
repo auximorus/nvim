@@ -5,8 +5,11 @@ return {
   -- install jsregexp (optional!).
   build = "make install_jsregexp",
   config = function()
+    local ls = require("luasnip")
     require("luasnip.loaders.from_vscode").lazy_load({
       paths = { "~/.config/nvim/snippets/es7-react" },
     })
+    ls.filetype_extend("javascriptreact", { "javascript" })
+    ls.filetype_extend("javascript", { "javascriptreact" })
   end,
 }
