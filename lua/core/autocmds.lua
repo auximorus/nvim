@@ -9,11 +9,11 @@ M.solo = {
       vim.opt.relativenumber = false
     end,
   },
-  {
-    events = { "BufRead", "BufNewFile" },
-    pattern = { "*.ejs" },
-    command = "set filetype=html",
-  },
+  -- {
+  --   events = { "BufRead", "BufNewFile" },
+  --   pattern = { "*.ejs" },
+  --   command = "set filetype=html",
+  -- },
   {
     events = { "BufRead", "BufNewFile" },
     pattern = { "*.js" },
