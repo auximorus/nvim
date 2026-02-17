@@ -52,8 +52,11 @@ return {
         lua_ls = {},
         clangd = {},
         pyright = {},
-        html = {},
+        html = {
+          filetypes = { "html", "ejs" },
+        },
         ts_ls = {
+          filetypes = { "javascript", "javascriptreact", "typescript", "typescriptreact", "ejs" },
           on_attach = function(client, bufnr)
             client.server_capabilities.documentFormattingProvider = false
             client.server_capabilities.documentRangeFormattingProvider = false
