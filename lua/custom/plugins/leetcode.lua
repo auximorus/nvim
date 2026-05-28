@@ -6,6 +6,8 @@ return {
     "nvim-lua/plenary.nvim",
     "MunifTanjim/nui.nvim",
   },
+
+  branch = "disable-x-requested-with-header",
   opts = {
     -- configuration goes here
   },

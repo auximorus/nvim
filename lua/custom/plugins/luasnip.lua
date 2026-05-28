@@ -11,6 +11,9 @@ return {
     })
     ls.filetype_extend("javascriptreact", { "javascript" })
     ls.filetype_extend("javascript", { "javascriptreact" })
+    ls.filetype_extend("typescriptreact", { "typescript" })
+    ls.filetype_extend("typescript", { "typescriptreact" })
+
     ls.setup({ snippets = { filetypes = { "ejs" } } })
   end,
 }

@@ -3,14 +3,14 @@ return {
   event = { "BufWritePre" },
   opts = {
     format_on_save = {
-      timeout_ms = 500,
+      timeout_ms = 3000,
       lsp_fallback = false,
     },
     formatters_by_ft = {
-      javascript = { "prettier" },
-      typescript = { "prettier" },
-      javascriptreact = { "prettier" },
-      typescriptreact = { "prettier" },
+      javascript = { "prettierd", "prettier" },
+      typescript = { "prettierd", "prettier" },
+      javascriptreact = { "prettierd", "prettier" },
+      typescriptreact = { "prettierd", "prettier" },
       lua = { "stylua" },
       python = { "black" },
       c = { "clang-format" },
