@@ -5,36 +5,27 @@ return {
     priority = 1000,
     opts = {},
   },
-  { "catppuccin/nvim",                 name = "catppuccin", priority = 1000 },
+  { "catppuccin/nvim", name = "catppuccin", priority = 1000 },
   { "rebelot/kanagawa.nvim" },
   { "EdenEast/nightfox.nvim" },
-  { "rose-pine/neovim",                name = "rose-pine" },
-  { 'navarasu/onedark.nvim' },
-  { 'nyoom-engineering/oxocarbon.nvim' },
-  { 'bluz71/vim-moonfly-colors' },
-  {
-    "scottmckendry/cyberdream.nvim",
-    lazy = false,
-    priority = 1000,
-    config = function()
-      require("cyberdream").setup({
-        variant = "auto"
-      })
-    end
-  },
+  { "rose-pine/neovim", name = "rose-pine" },
+  { "navarasu/onedark.nvim" },
+  { "nyoom-engineering/oxocarbon.nvim" },
+  { "bluz71/vim-moonfly-colors" },
+
   { "bluz71/vim-nightfly-colors" },
   {
-    'AlexvZyl/nordic.nvim',
+    "AlexvZyl/nordic.nvim",
     lazy = false,
     priority = 1000,
   },
   { "savq/melange-nvim" },
-  { 'luisiacc/gruvbox-baby' },
+  { "luisiacc/gruvbox-baby" },
   {
-    'uloco/bluloco.nvim',
+    "uloco/bluloco.nvim",
     lazy = false,
     priority = 1000,
-    dependencies = { 'rktjmp/lush.nvim' },
+    dependencies = { "rktjmp/lush.nvim" },
     config = function()
       -- your optional config goes here, see below.
     end,
@@ -46,7 +37,7 @@ return {
       require("vague").setup({
         -- optional configuration here
       })
-    end
+    end,
   },
   {
     "neanias/everforest-nvim",
@@ -54,15 +45,13 @@ return {
     lazy = false,
     priority = 1000,
     config = function()
-      require("everforest").setup({
-      })
+      require("everforest").setup({})
     end,
   },
   {
     "oxfist/night-owl.nvim",
     lazy = false,
     priority = 1000,
-    config = function()
-    end,
-  }
+    config = function() end,
+  },
 }
