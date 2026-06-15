@@ -10,8 +10,8 @@ return {
       ["Dayfox"] = "dayfox",
       ["Dawnfox"] = "dawnfox",
       ["RosePine Dawn"] = "rose-pine-dawn",
-      ['Cyberdream Light'] = "cyberdream",
-      ['Bluloco Light'] = "bluloco-light",
+      -- ["Cyberdream Light"] = "cyberdream",
+      ["Bluloco Light"] = "bluloco-light",
     }
     local dark_themes = {
       ["Tokyonight Moon"] = "tokyonight-moon",
@@ -31,7 +31,7 @@ return {
       ["RosePine Moon"] = "rose-pine-moon",
       ["Oxocarbon"] = "oxocarbon",
       ["Moonfly"] = "moonfly",
-      ['CyberDream'] = "cyberdream",
+      -- ['CyberDream'] = "cyberdream",
       ["Nightfly"] = "nightfly",
       ["Nordic"] = "nordic",
       ["Melange"] = "melange",
@@ -135,7 +135,7 @@ return {
       livePreview = true,
       onThemeChange = function(theme)
         save_theme(theme)
-      end
+      end,
     })
-  end
+  end,
 }
